@@ -1,6 +1,4 @@
-#!/bin/bash
-
-set -e
+#!/bin/bash -uex
 
 cat << EOR | sudo tee -a /etc/os-release
 NAME="Ubuntu"
