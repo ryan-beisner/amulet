@@ -610,7 +610,10 @@ class Talisman(object):
             messages = []
             for unit in status.get(service, {}).values():
                 if not unit['workload-status']:
-                    raise helpers.UnsupportedError()
+                    # Only warn.  https://github.com/juju/amulet/issues/185
+                    log.warn('Unit {} has no '
+                             'workload-status'.format(unit['unit_name']))
+                    continue
                 messages.append(unit['workload-status'].get('message', ''))
             return messages
 
